@@ -1,0 +1,6 @@
+<h1><%= comment.content %></h1>
+
+<form action="/comments/<%= workoutId%>/<%= comment.id %>/?_method=PUT" method="POST">
+    <input type="text" name="edit" id="edit" value="<%= comment.content %>">
+    <input type="submit" value="Edit">
+</form>

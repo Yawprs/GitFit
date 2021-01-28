@@ -1,1 +1,8 @@
 <h1><%= currentUser.name %>'s Profile</h1>
+
+<% user.workouts.forEach(workout => { %>
+    <ul>
+    <a href="/profile/<%= workout.id %>/show"><%= workout.name %></a>
+    </ul>
+<% }) %>
+

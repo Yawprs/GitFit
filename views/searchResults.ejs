@@ -1,1 +1,18 @@
-<h2>Results information</h2>
+<!-- <header>GitFit</header>
+<h3>Get ripped or die tryin'</h3> -->
+
+<% exercises.forEach(exercise => { %>
+    <a href="/workouts/api/<%= exercise.id %>">
+        <%= exercise.name %>
+    </a>
+    <% if(currentUser) { %>
+        <form action="/workouts" method="post">
+            <input type="hidden" name="name" value="<%= exercise.name %>">
+            <input type="hidden" name="apiId" value="<%= exercise.id %>">
+        <input type="submit" value="Add to Favorites">
+        </form>
+    <% } else { %>
+        <a href="/auth/login">Login to add to favorites</a>
+    <% } %>
+
+<% }) %>

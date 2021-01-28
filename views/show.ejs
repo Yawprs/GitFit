@@ -1,0 +1,24 @@
+
+<ul>
+    <li><%= workout.name %></li>
+    <li><%= apiData.description %></li>
+    <li><%= apiData.muscle %></li>
+</ul>
+
+
+<p>Personal Comments</p>
+<ul>
+    <% workout.comments.forEach(comment => { %>
+        <li><%= comment.content %></li>
+        <a href="/comments/<%= workout.id %>/<%= comment.id %>">Edit</a>
+        <form action="/comments/<%= workout.id %>/<%= comment.id %>/?_method=DELETE" method="POST">
+            <input type="submit" value="Delete">
+        </form>
+    <% }) %>
+</ul>
+
+<form action="/comments/<%= workout.id %>" method="POST">
+    <input type="text" name="content" id="content">
+    
+    <input type="submit" value="Add a comment">
+</form>
