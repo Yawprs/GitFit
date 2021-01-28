@@ -4,6 +4,7 @@ const router = express.Router()
 const db = require('../models')
 
 router.post('/', (req, res) => {
+    console.log(req.body)
     db.workout.findOrCreate({
         where: {
             name: req.body.name,
@@ -22,8 +23,23 @@ router.get('/api/:apiId', (req, res) => {
         })
     .then(apiData => {
         console.log(apiData.data)
-        res.render('apiShow', {apiData : apiData.data})
+        res.render('apiShow', {apiData : apiData.data, apiId: req.params.apiId})
     }).catch(err => {console.log(err)})
+})
+
+router.delete('/profile/:id/show', (req, res) => {
+    db.user.findByPk(req.user.id)
+    .then(user => {
+        db.workout.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(workout => {
+            console.log(workout)
+            user.removeWorkout(workout)
+            res.redirect('/profile')
+        })
+    })
 })
 
 module.exports = router

@@ -1,10 +1,12 @@
 
 <ul>
-    <li><%= workout.name %></li>
-    <li><%= apiData.description %></li>
-    <li><%= apiData.muscle %></li>
+    <h3><%- workout.name %></h3>
+    <li><%- apiData.description %></li>
+    <li><%= apiData.muscles.id %></li>
 </ul>
-
+<form action="/workouts/profile/<%= workout.id %>/show/?_method=DELETE" method="POST">
+    <input type="submit" value="Remove from favorites">
+</form>
 
 <p>Personal Comments</p>
 <ul>

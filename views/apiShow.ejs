@@ -1,5 +1,16 @@
 <ul>
-    <li><%= apiData.name %></li>
-    <li><%= apiData.description %></li>
-    <li><%= apiData.muscle %></li>
+    <li><h3><%- apiData.name %></h3></li>
+    <%- apiData.description %>
+    <%= apiData.muscle %>
+</ul>
+<ul>
+<% if(currentUser) { %>
+    <form action="/workouts" method="post">
+        <input type="hidden" name="name" value="<%= apiData.name %>">
+        <input type="hidden" name="apiId" value="<%= apiId %>">
+    <input type="submit" value="Add to Favorites">
+    </form>
+<% } else { %>
+    <a href="/auth/login">Login to add to favorites</a>
+<% } %>
 </ul>
