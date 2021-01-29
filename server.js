@@ -11,6 +11,8 @@ const axios = require('axios')
 const db = require('./models/index.js')
 const methodOverride = require('method-override')
 
+app.use(express.static(__dirname + '/public'))
+
 //set view engine to ejs
 app.set('view engine', 'ejs')
 app.use(ejsLayouts)

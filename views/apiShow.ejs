@@ -1,8 +1,7 @@
 <ul>
-    <li><h3><%- apiData.name %></h3></li>
+    <h3><%- apiData.name %></h3>
     <%- apiData.description %>
-    <%= apiData.muscle %>
-</ul>
+    </ul>
 <ul>
 <% if(currentUser) { %>
     <form action="/workouts" method="post">
